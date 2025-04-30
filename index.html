@@ -1,0 +1,234 @@
+<!-- Actividad para recomendaciones estudiantiles-->
+<!-- Fecha ultima modificacion: 26/04/2025-->
+<!-- Programadores: Alejandra Herrera/ Samuel Kostko-->
+<!--  ID Programadores: Alejandra Herrera ID(  )/ Samuel Kostko ID(  )-->
+<!-- Version del codigo : 0.12.98 -->
+ <!--Lenguajes utilizados y versiones:
+        HTML 5.2
+        CSS	CSS3
+        JAVASCRIPT  ES2015+
+        PHP FALTA
+        SQL FALTA INTEGRAR
+
+        Bibliotecas
+        Font Awesome	6.4.0
+        Google Fonts	API v2
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USM Viajeros - Recomendaciones turísticas para estudiantes</title>
+    <!-- Favicon / permite visualizar el icono del avion -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <!-- fuentes de Google Fonts entre ellas Poppins y Montserrat  -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    
+    <!-- Enlace css y java-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="js/main.js">
+</head>
+<body>
+    <!--  animación (3 segundos) -->
+    <div class="preloader">
+        <div class="plane-animation">✈️</div>
+        <div class="loading-text">Cargando aventuras...</div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">✈️</span>
+                <h1>USM Viajeros</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#instagram">Recomendaciones</a>
+                <a href="#places">Lugares Populares</a>
+                <a href="#recommendations">Comparte tu Experiencia</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Descubre Caracas con USM Viajeros</h2>
+            <p>La plataforma donde los estudiantes de la Universidad Santa María comparten sus mejores experiencias y recomendaciones turísticas en la ciudad.</p>
+            <div>
+                <a href="#recommendations" class="btn">Comparte tu experiencia</a>
+                <a href="#places" class="btn btn-secondary">Explora lugares</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recomendaciones de Instagram -->
+    <section class="section" id="instagram">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recomendaciones de Estudiantes</h2>
+            </div>
+            <div class="instagram-feed">
+                <h3>Últimas publicaciones de nuestros viajeros</h3>
+                <p>Descubre lo que otros estudiantes están compartiendo sobre sus aventuras en Caracas.</p>
+                
+                <div class="feed-container" id="instagramFeed">
+                    <!-- Las publicaciones de Instagram se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lugares populares -->
+    <section class="section" id="places">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lugares más visitados en Caracas</h2>
+            </div>
+            <div class="popular-places">
+                <div class="categories">
+                    <button class="category-btn active" data-category="all">Todos</button>
+                    <button class="category-btn" data-category="food">Comida</button>
+                    <button class="category-btn" data-category="entertainment">Distracción</button>
+                    <button class="category-btn" data-category="sports">Deportes</button>
+                    <button class="category-btn" data-category="popular">Populares</button>
+                </div>
+                
+                <div class="places-grid" id="placesGrid">
+                    <!-- Los lugares se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recomendaciones de usuarios -->
+    <section class="section" id="recommendations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comparte tu Experiencia</h2>
+            </div>
+            <div class="user-recommendations">
+                <div class="comment-form">
+                    <h3 class="form-title">Deja tu recomendación</h3>
+                    <form id="recommendationForm">
+                        <div class="form-group">
+                            <label for="userName">Nombre</label>
+                            <input type="text" id="userName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userComment">Recomendación</label>
+                            <textarea id="userComment" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="userRating">Calificación (1-5)</label>
+                            <select id="userRating" class="form-control" required>
+                                <option value="">Selecciona una calificación</option>
+                                <option value="1">1 - Malo</option>
+                                <option value="2">2 - Regular</option>
+                                <option value="3">3 - Bueno</option>
+                                <option value="4">4 - Muy bueno</option>
+                                <option value="5">5 - Excelente</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userImage">Subir imagen (opcional)</label>
+                            <input type="file" id="userImage" class="form-control" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label>Ubicación</label>
+                            <div class="map-container" id="map">
+                                <!-- Mapa interactivo se cargará aquí -->
+                                <p style="text-align: center; padding-top: 100px;">Mapa interactivo aparecerá aquí</p>
+                            </div>
+                            <small>Selecciona la ubicación en el mapa</small>
+                        </div>
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn">Publicar</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="avatar-creator">
+                    <h3 class="form-title">Crea tu avatar de viajero</h3>
+                    <div class="avatar-preview" id="avatarPreview">
+                        <img src="imagenes/personaje1Sinfondo.JPG" alt="Avatar preview" class="avatar-image" id="avatarImage">
+                    </div>
+                    <div class="avatar-options">
+                        <div class="avatar-option" data-avatar="1">
+                            <img src="imagenes/personaje3Sinfondo.JPG" alt="Avatar 1">
+                            <span>Viajero 1</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="2">
+                            <img src="imagenes/avatar2.png" alt="Avatar 2">
+                            <span>Viajero 2</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="3">
+                            <img src="imagenes/avatar3.png" alt="Avatar 3">
+                            <span>Viajero 3</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="4">
+                            <img src="imagenes/avatar4.png" alt="Avatar 4">
+                            <span>Viajero 4</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="5">
+                            <img src="imagenes/avatar5.jpeg" alt="Avatar 5">
+                            <span>Viajero 5</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="6">
+                            <img src="imagenes/avatar1.jpeg" alt="Avatar 6">
+                            <span>Viajero 6</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-bottom: 20px;">Recomendaciones recientes</h3>
+                <div class="comments-list" id="commentsList">
+                    <!-- Los comentarios se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-plane"></i> USM Viajeros
+            </div>
+            <div class="footer-links">
+                <a href="#">Inicio</a>
+                <a href="#instagram">Recomendaciones</a>
+                <a href="#places">Lugares</a>
+                <a href="#recommendations">Comparte</a>
+                <a href="#">Acerca de</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 USM Viajeros. Creada por el Grupo 13: Alejandra Herrera / Samuel Kostko .</p>
+            
+        </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+FUNCIONES DEL PROGRAMA EN GENERAL 
+(considerando HTML, CSS y JavaScript)
+
+Total de funciones: 12
+
+Funciones JavaScript (9) - En main.js:
+   - 7 funciones principales
+   - 2 funciones auxiliares (anidadas)
+
+Funciones CSS (3) - En style.css  
+   - `pulse` (animación del logo)
+   - `textGlow` (efecto neón en texto)
+   - `float` (animación de elementos flotantes)
+
+---
+
+🔹 Funciones JavaScript (main.js)
+1. loadInstagramFeed()
+Función: Simula un feed de Instagram con publicaciones de estudiantes.
+Qué hace:
+
+Crea 6 publicaciones falsas con:
+    Imágenes de lugares en Caracas
+    Nombres de usuarios generados
+    Descripciones y contadores de "likes"/comentarios
+    Las muestra en el contenedor #instagramFeed como tarjetas interactivas
+
+2. loadPopularPlaces()
+Función: Muestra y filtra lugares turísticos.
+Qué hace:
+
+     Crea 8 lugares con:
+     Foto, título, categoría (comida/deportes/etc.), descripción y rating
+     Implementa botones de filtrado (ej: "Comida", "Deportes")
+     Usa dataset.category para mostrar/ocultar tarjetas según la categoría seleccionada
+
+3. setupUserRecommendations()
+Función: Sistema de comentarios persistente.
+Componentes internos:
+
+loadComments():
+Carga comentarios guardados en localStorage al iniciar la página.
+
+addCommentToDOM(comment):
+Dibuja un comentario en pantalla con:
+
+Avatar del usuario
+
+Estrellas de rating
+
+Texto y posible imagen adjunta
+
+4. setupAvatarCreator()
+Función: Selector de avatares para comentarios.
+Cómo funciona:
+
+Ofrece 6 avatares predefinidos
+
+Al hacer clic en uno:
+
+Muestra una vista previa
+
+Aplica estilo "active" al seleccionado
+
+Guarda la imagen para usarla en comentarios
+5. setupMap() (Placeholder)
+Función: Simulación de mapa interactivo.
+Nota: En producción, aquí iría la integración con Google Maps API. Actualmente solo muestra un mensaje al hacer clic.
+
+6. setupSmoothScrolling()
+Función: Navegación suave entre secciones.
+Técnica:
+
+Intercepta clics en enlaces como <a href="#instagram">
+
+Usa window.scrollTo() con comportamiento "smooth"
+
+Ajusta la posición considerando el header fijo (offsetTop - 80)
+
+7. Función anónima de setTimeout
+Función: Pantalla de carga inicial.
+Detalles:
+
+Muestra animación del avión ✈️ por 3 segundos exactos
+
+Luego aplica preloader.classList.add('hidden') para ocultarla
+
+
+
+🔹 Animaciones CSS
+
+8. pulse
+Ubicación: En el ✈️ del logo.
+Efecto:
+
+Hace "latir" el icono con transform: scale(1.1)
+
+Aumenta su sombra neón cada 2 segundos
+
+9. textGlow
+Aplicado a: Títulos principales.
+Comportamiento:
+
+Alterna entre sombras de colores neón (rosa/magenta)
+
+Crea efecto de texto luminoso que "respira"
+
+10. float
+Usado en: Elementos con clase .floating.
+Movimiento:
+
+Oscilación vertical suave (como flotando)
+
+Ciclo cada 3 segundos con translateY(-10px)
